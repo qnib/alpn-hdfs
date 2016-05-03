@@ -17,6 +17,10 @@ Creating hdfs1
 
 Now we can hook into the first node and copy a file - but **give it a couple of seconds** to settle.
 
+![](./pics/consul_hdfs.png)
+
+Consul (`<docker-host>:8500`) should glow green after a while...
+
 ```
 ➜  alpn-hdfs git:(master) ✗ docker exec -ti hdfs1 bash
 bash-4.3# su -c '/opt/hadoop/bin/hadoop fs -mkdir /test' hadoop
