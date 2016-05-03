@@ -25,14 +25,5 @@ echo -n ">> Waiting for 'hdfs-namenode'.... "
 wait_for_srv hdfs-namenode
 sleep 2
 
-echo ">> Is the namenode localhost?..."
-supervisorctl status|egrep "hdfs-namenode.*RUNNING"
-if [ $? -eq 0 ];then
-    HADOOP_HDFS_NAMENODE_URI=localhost
-else
-    HADOOP_HDFS_NAMENODE_URI=hdfs-namenode.service.consul
-fi
-echo ">> NAMENODE=${HADOOP_HDFS_NAMENODE_URI}"
-
-su -c "/opt/hadoop/bin/hdfs --config /opt/hadoop/etc/hadoop/ datanode -fs hdfs://${HADOOP_HDFS_NAMENODE_URI}/" hadoop
+su -c "/opt/hadoop/bin/hdfs --config /opt/hadoop/etc/hadoop/ datanode -fs hdfs://$(hostname).node.consul/" hadoop
 
