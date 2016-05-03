@@ -29,7 +29,8 @@ fi
 # Wait for sshd to be up'n'running
 #wait_for_srv ssh
 
+sleep 3
+
 HADOOP_HDFS_NAMENODE_URI=${HADOOP_HDFS_NAMENODE_URI-0.0.0.0}
 
-consul-template -consul localhost:8500 -once -template "/etc/consul-templates/hdfs/namenode/core-site.xml.ctmpl:/opt/hadoop/etc/hadoop/core-site.xml"
 su -c '/opt/hadoop/bin/hdfs --config /opt/hadoop/etc/hadoop/ namenode' hadoop

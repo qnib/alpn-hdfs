@@ -26,14 +26,13 @@ ADD etc/consul.d/hdfs-namenode.json \
     etc/consul.d/hdfs-datanode.json \
     /etc/consul.d/
 ## Namenode Setup
-ADD etc/consul-templates/hdfs/namenode/core-site.xml.ctmpl \
-    etc/consul-templates/hdfs/namenode/hdfs-site.xml.ctmpl \
-    /etc/consul-templates/hdfs/namenode/
+#ADD etc/consul-templates/hdfs/namenode/core-site.xml.ctmpl \
+#    etc/consul-templates/hdfs/namenode/hdfs-site.xml.ctmpl \
+#    /etc/consul-templates/hdfs/namenode/
 ADD opt/qnib/hdfs/namenode/bin/start.sh /opt/qnib/hdfs/namenode/bin/
 
 ## Datanode Setup
 ADD opt/qnib/hdfs/datanode/bin/start.sh /opt/qnib/hdfs/datanode/bin/
-ADD etc/consul-templates/hdfs/hdfs-site.xml.ctmpl /etc/consul-templates/hdfs/
 ADD opt/qnib/hdfs/namenode/etc/hadoop-env.sh \
     opt/qnib/hdfs/namenode/etc/hdfs-site.xml \
     /opt/qnib/hdfs/namenode/etc/
@@ -41,6 +40,7 @@ ADD opt/qnib/hdfs/datanode/etc/hadoop-env.sh \
     opt/qnib/hdfs/datanode/etc/hdfs-site.xml \
     /opt/qnib/hdfs/datanode/etc/
 ADD etc/consul-templates/hadoop/core-site.xml.ctmpl \
+    etc/consul-templates/hadoop/hdfs-site.xml.ctmpl \
     /etc/consul-templates/hadoop/
 ADD opt/qnib/hdfs/bin/configure.sh /opt/qnib/hdfs/bin/
 ADD etc/supervisord.d/hdfs-configure.ini /etc/supervisord.d/
