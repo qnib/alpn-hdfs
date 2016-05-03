@@ -1,0 +1,20 @@
+base:
+    environment:
+     - DC_NAME=dc1
+     - COLLECT_METRICS=false
+    dns: 
+     - "127.0.0.1"
+    dns_search:
+     - node.consul
+    privileged: true
+
+hdfs:
+    extends:
+      file: base.yml
+      service: base
+    image: qnib/alpn-hdfs
+    environment:
+     - SUPERVISOR_SKIP_SRV=watchpsutil
+    ports:
+     - 8042
+

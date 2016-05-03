@@ -1,0 +1,46 @@
+consul:
+    extends:
+      file: base.yml
+      service: base
+    hostname: consul
+    container_name: hadoop-consul
+    image: qnib/alpn-consul
+    environment:
+    - RUN_SERVER=true
+    - BOOTSTRAP_CONSUL=true
+    ports:
+    - "8500:8500"
+
+hdfs1:
+    extends:
+      file: base.yml
+      service: hdfs
+    hostname: hdfs1
+    container_name: hdfs1
+    environment:
+     - HADOOP_HDFS_NAMENODE=true
+     - HADOOP_YARN_RESOURCEMANAGER=true
+     - HADOOP_HDFS_NAMENODE_URI=hdfs1
+     - SUPERVISOR_SKIP_SRV=hdfs-datanode
+    ports:
+     - 8088:8088
+    links:
+     - consul:consul
+
+hdfs2:
+    extends:
+      file: base.yml
+      service: hdfs
+    hostname: hdfs2
+    container_name: hdfs2
+    links:
+     - consul:consul
+
+hdfs3:
+    extends:
+      file: base.yml
+      service: hdfs
+    hostname: hdfs3
+    container_name: hdfs3
+    links:
+     - consul:consul
