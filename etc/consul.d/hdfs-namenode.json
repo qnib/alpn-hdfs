@@ -1,0 +1,16 @@
+{
+  "services": [
+    {
+        "id": "hdfs-namenode",
+        "name": "hdfs-namenode",
+        "tags": [ ],
+        "port": 50070,
+        "checks": [
+            {
+               "script": "echo Check for process 'namenode';ps -ef|grep -v grep|grep 'java -Dproc_namenode'",
+               "interval": "3s"
+            }
+       ]
+    }
+  ]
+}
