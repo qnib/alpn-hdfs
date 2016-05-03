@@ -21,7 +21,6 @@ hdfs1:
      - HADOOP_HDFS_NAMENODE=true
      - HADOOP_YARN_RESOURCEMANAGER=true
      - HADOOP_HDFS_NAMENODE_URI=hdfs1
-     - SUPERVISOR_SKIP_SRV=hdfs-datanode
     ports:
      - 8088:8088
     links:
