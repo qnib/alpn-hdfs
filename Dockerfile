@@ -42,7 +42,9 @@ ADD opt/qnib/hdfs/datanode/etc/hadoop-env.sh \
 ADD etc/consul-templates/hadoop/core-site.xml.ctmpl \
     etc/consul-templates/hadoop/hdfs-site.xml.ctmpl \
     /etc/consul-templates/hadoop/
-ADD opt/qnib/hdfs/bin/configure.sh /opt/qnib/hdfs/bin/
+ADD opt/qnib/hdfs/bin/configure.sh \
+    opt/qnib/hdfs/bin/check.sh \
+    /opt/qnib/hdfs/bin/
 ADD etc/supervisord.d/hdfs-configure.ini /etc/supervisord.d/
 ADD etc/bashrc.hadoop /etc/
 #RUN echo "source /etc/bashrc.hadoop" >> /etc/bashrc

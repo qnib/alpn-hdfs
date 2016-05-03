@@ -3,12 +3,24 @@
     {
         "id": "hdfs-namenode",
         "name": "hdfs-namenode",
-        "tags": [ ],
+        "tags": [],
+        "port": 8020,
+        "checks": [
+            {
+               "script": "/opt/qnib/hdfs/bin/check.sh fs.default.name 8020",
+               "interval": "5s"
+            }
+       ]
+    },
+    {
+        "id": "hdfs-namenode-http",
+        "name": "hdfs-namenode-http",
+        "tags": [],
         "port": 50070,
         "checks": [
             {
-               "script": "echo Check for process 'namenode';ps -ef|grep -v grep|grep 'java -Dproc_namenode'",
-               "interval": "3s"
+               "script": "/opt/qnib/hdfs/bin/check.sh dfs.http.address 50070",
+               "interval": "5s"
             }
        ]
     }

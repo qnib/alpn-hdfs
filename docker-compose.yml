@@ -23,6 +23,7 @@ hdfs1:
      - HADOOP_HDFS_NAMENODE_URI=hdfs1
     ports:
      - 8088:8088
+     - 50070:50070
     links:
      - consul:consul
 

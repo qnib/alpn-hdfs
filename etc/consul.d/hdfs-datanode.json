@@ -4,11 +4,35 @@
         "id": "hdfs-datanode",
         "name": "hdfs-datanode",
         "tags": [],
+        "port": 50010,
+        "checks": [
+            {
+               "script": "/opt/qnib/hdfs/bin/check.sh dfs.datanode.address 50010",
+               "interval": "5s"
+            }
+       ]
+    },
+    {
+        "id": "hdfs-datanode-ipc",
+        "name": "hdfs-datanode-ipc",
+        "tags": [],
+        "port": 50020,
+        "checks": [
+            {
+               "script": "/opt/qnib/hdfs/bin/check.sh dfs.datanode.ipc.address 50020",
+               "interval": "5s"
+            }
+       ]
+    },
+    {
+        "id": "hdfs-datanode-http",
+        "name": "hdfs-datanode-http",
+        "tags": [],
         "port": 50075,
         "checks": [
             {
-               "script": "echo Check for process 'datanode';ps -ef|grep -v grep|grep 'java -Dproc_datanode'",
-               "interval": "3s"
+               "script": "/opt/qnib/hdfs/bin/check.sh dfs.datanode.http.address 50075",
+               "interval": "5s"
             }
        ]
     }
