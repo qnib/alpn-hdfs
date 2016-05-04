@@ -3,6 +3,12 @@
 source /etc/bashrc.hadoop
 source /opt/qnib/consul/etc/bash_functions.sh
 
+function wait_for_lock {
+    while [ ! -f /tmp/hdfs_configure.done ];do
+        sleep 1
+    done;
+}
+
 if [ "${HADOOP_HDFS_NAMENODE}" != "true" ];then
     rm -f /etc/consul.d/hdfs-namenode.json
     consul reload
@@ -10,10 +16,14 @@ if [ "${HADOOP_HDFS_NAMENODE}" != "true" ];then
     exit 0
 fi
 
+wait_for_lock
+
 if [ ! -d /data/hadoopdata/hdfs ];then
-    mkdir -p /data/hadoopdata/hdfs
-    chown -R hadoop: /data/hadoopdata/hdfs
+    mkdir -p /data/hadoopdata/hdfs    
 fi
+
+chown -R hadoop: /data/hadoopdata/hdfs
+
 if [ ! -d /data/hadoopdata/hdfs/namenode ];then
     echo "Formating namenode"
     su -c '/opt/hadoop/bin/hdfs --config /opt/hadoop/etc/hadoop/ namenode -format -force' hadoop
