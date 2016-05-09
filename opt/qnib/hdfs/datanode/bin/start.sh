@@ -12,7 +12,7 @@ if [ "${HADOOP_HDFS_DATANODE}" != "true" ];then
 fi
 
 if [ ! -d /data/hadoopdata/logs ];then
-    mkdir /data/hadoopdata/logs/
+    mkdir -p /data/hadoopdata/logs/
     chown -R hadoop: /data/hadoopdata/logs/
     ln -s /data/hadoopdata/logs /opt/hadoop/
 else
@@ -33,5 +33,5 @@ echo -n ">> Waiting for 'hdfs-namenode'.... "
 wait_for_srv hdfs-namenode
 sleep 2
 
-su -c "/opt/hadoop/bin/hdfs --config /opt/hadoop/etc/hadoop/ datanode -fs hdfs://$(hostname).node.consul/" hadoop
+su -c "/opt/hadoop/bin/hdfs --config /opt/hadoop/etc/hadoop/ datanode" hadoop
 
