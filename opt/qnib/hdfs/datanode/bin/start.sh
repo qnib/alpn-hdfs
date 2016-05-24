@@ -3,6 +3,14 @@
 source /etc/bashrc.hadoop
 source /opt/qnib/consul/etc/bash_functions.sh
 
+if [ "${HADOOP_HDFS_DATANODE}" != "true" ];then
+    echo "> 'HADOOP_HDFS_DATANODE!=true' Remove service"
+    rm -f /etc/consul.d/hdfs-datanode.json
+    consul reload
+    sleep 2
+    exit 0
+fi
+
 if [ ! -d /data/hadoopdata/logs ];then
     mkdir /data/hadoopdata/logs/
     chown -R hadoop: /data/hadoopdata/logs/
@@ -17,13 +25,9 @@ if [ ! -d /data/hadoopdata/hdfs/datanode ];then
 else
     chown -R hadoop: /data/hadoopdata/hdfs/datanode
 fi
-# Wait for sshd to be up'n'running
-#echo -n ">> Waiting for 'ssh'.... "
-#wait_for_srv ssh
 
 echo -n ">> Waiting for 'hdfs-namenode'.... "
 wait_for_srv hdfs-namenode
 sleep 2
 
 su -c "/opt/hadoop/bin/hdfs --config /opt/hadoop/etc/hadoop/ datanode -fs hdfs://$(hostname).node.consul/" hadoop
-

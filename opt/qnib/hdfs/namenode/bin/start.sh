@@ -3,23 +3,18 @@
 source /etc/bashrc.hadoop
 source /opt/qnib/consul/etc/bash_functions.sh
 
-function wait_for_lock {
-    while [ ! -f /tmp/hdfs_configure.done ];do
-        sleep 1
-    done;
-}
-
 if [ "${HADOOP_HDFS_NAMENODE}" != "true" ];then
+    echo "> 'HADOOP_HDFS_NAMENODE!=true' Remove service"
     rm -f /etc/consul.d/hdfs-namenode.json
     consul reload
     sleep 2
     exit 0
 fi
 
-wait_for_lock
+wait_for_lock /tmp/hdfs_configure.done
 
 if [ ! -d /data/hadoopdata/hdfs ];then
-    mkdir -p /data/hadoopdata/hdfs    
+    mkdir -p /data/hadoopdata/hdfs
 fi
 
 chown -R hadoop: /data/hadoopdata/hdfs
