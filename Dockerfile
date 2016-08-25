@@ -30,12 +30,12 @@ ADD etc/consul.d/hdfs-namenode.json \
 #    etc/consul-templates/hdfs/namenode/hdfs-site.xml.ctmpl \
 #    /etc/consul-templates/hdfs/namenode/
 ADD opt/qnib/hdfs/namenode/bin/start.sh /opt/qnib/hdfs/namenode/bin/
-
-## Datanode Setup
-ADD opt/qnib/hdfs/datanode/bin/start.sh /opt/qnib/hdfs/datanode/bin/
 ADD opt/qnib/hdfs/namenode/etc/hadoop-env.sh \
     opt/qnib/hdfs/namenode/etc/hdfs-site.xml \
     /opt/qnib/hdfs/namenode/etc/
+
+## Datanode Setup
+ADD opt/qnib/hdfs/datanode/bin/start.sh /opt/qnib/hdfs/datanode/bin/
 ADD opt/qnib/hdfs/datanode/etc/hadoop-env.sh \
     opt/qnib/hdfs/datanode/etc/hdfs-site.xml \
     /opt/qnib/hdfs/datanode/etc/
