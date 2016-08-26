@@ -48,3 +48,5 @@ ADD opt/qnib/hdfs/bin/configure.sh \
 ADD etc/supervisord.d/hdfs-configure.ini /etc/supervisord.d/
 ADD etc/bashrc.hadoop /etc/
 RUN echo "source /etc/bashrc.hadoop" >> /etc/bashrc
+## move to consul-content
+ADD opt/qnib/consul/bin/start.sh /opt/qnib/consul/bin/
