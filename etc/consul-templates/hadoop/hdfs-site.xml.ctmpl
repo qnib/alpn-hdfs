@@ -15,8 +15,11 @@
 -->
 
 <!-- Put site-specific property overrides in this file. -->
-
 <configuration>
+  <property>
+    <name>dfs.namenode.rpc-address</name>
+    <value>{{ $is_nn := env "HADOOP_HDFS_NAMENODE" }}{{ if eq $is_nn "true" }}{{ env "NODE_IP" }}{{ else }}{{range $i, $e := service "hdfs-namenode" "any"}}{{if ne $i 0}},{{end}}{{$e.Address}}{{end}}{{ end }}:8020</value>
+  </property>
   <property>
     <name>dfs.replication</name>
     <value>{{ env "HADOOP_DFS_REPLICATION" }}</value>

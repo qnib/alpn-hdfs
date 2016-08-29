@@ -2,6 +2,7 @@
 
 source /etc/bashrc.hadoop
 source /opt/qnib/consul/etc/bash_functions.sh
+wait_for_srv consul-http
 
 if [ "${HADOOP_HDFS_DATANODE}" != "true" ];then
     echo "> 'HADOOP_HDFS_DATANODE!=true' Remove service"
