@@ -17,6 +17,21 @@
 <!-- Put site-specific property overrides in this file. -->
 <configuration>
   <property>
+    <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+    <value>false</value>
+    <description></description>
+  </property>
+  <property>
+    <name>dfs.datanode.use.datanode.hostname</name>
+    <value>false</value>
+    <description>Whether datanodes should use datanode hostnames when connecting to other datanodes for data transfer.</description>
+  </property>
+  <property>
+    <name>dfs.client.use.datanode.hostname</name>
+    <value>false</value>
+    <description>Whether clients should use datanode hostnames when connecting to datanodes.</description>
+  </property>
+  <property>
     <name>dfs.namenode.rpc-address</name>
     <value>{{ $is_nn := env "HADOOP_HDFS_NAMENODE" }}{{ if eq $is_nn "true" }}{{ env "NODE_IP" }}{{ else }}{{range $i, $e := service "hdfs-namenode" "any"}}{{if ne $i 0}},{{end}}{{$e.Address}}{{end}}{{ end }}:8020</value>
   </property>
