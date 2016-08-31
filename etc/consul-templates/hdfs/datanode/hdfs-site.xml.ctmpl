@@ -17,9 +17,17 @@
 <!-- Put site-specific property overrides in this file. -->
 <configuration>
   <property>
+    <name>dfs.datanode.dns.nameserver</name>
+    <value>default</value>
+    <description>The host name or IP address of the name server (DNS) which a DataNode should use to determine the host name used by the NameNode for communication and display purposes. </description>
+  </property>
+  <property>
     <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
     <value>false</value>
-    <description></description>
+    <description>If true (the default), then the namenode requires that a connecting datanode's address must be resolved to a hostname.
+    If necessary, a reverse DNS lookup is performed. All attempts to register a datanode from an unresolvable address are rejected.
+    It is recommended that this setting be left on to prevent accidental registration of datanodes listed by hostname in the excludes file during a DNS outage.
+    Only set this to false in environments where there is no infrastructure to support reverse DNS lookup. </description>
   </property>
   <property>
     <name>dfs.datanode.use.datanode.hostname</name>
@@ -33,7 +41,7 @@
   </property>
   <property>
     <name>dfs.namenode.rpc-address</name>
-    <value>{{ $is_nn := env "HADOOP_HDFS_NAMENODE" }}{{ if eq $is_nn "true" }}{{ env "NODE_IP" }}{{ else }}{{range $i, $e := service "hdfs-namenode" "any"}}{{if ne $i 0}},{{end}}{{$e.Address}}{{end}}{{ end }}:8020</value>
+    <value>{{ $is_nn := env "HADOOP_HDFS_NAMENODE" }}{{ if eq $is_nn "true" }}{{ env "NODE_IP" }}{{ else }}{{range $i, $e := service "hdfs-namenode" "any"}}{{if ne $i 0}},{{end}}{{$e.Node}}{{end}}{{ end }}:8020</value>
   </property>
   <property>
     <name>dfs.replication</name>

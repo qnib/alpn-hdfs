@@ -1,0 +1,28 @@
+{
+  "services": [
+    {
+        "id": "yarn-resourcemanager",
+        "name": "yarn-resourcemanager",
+        "tags": [],
+        "port": 8033,
+        "checks": [
+            {
+               "script": "/opt/qnib/hdfs/bin/check.sh yarn-resourcemanager 8033",
+               "interval": "5s"
+            }
+       ]
+    },
+    {
+        "id": "yarn-resourcemanager-http",
+        "name": "yarn-resourcemanager-http",
+        "tags": [],
+        "port": 8088,
+        "checks": [
+            {
+               "script": "/opt/qnib/hdfs/bin/check.sh yarn-resourcemanager 8088",
+               "interval": "5s"
+            }
+       ]
+    }
+  ]
+}

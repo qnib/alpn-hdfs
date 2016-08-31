@@ -1,0 +1,16 @@
+{
+  "services": [
+    {
+        "id": "yarn-nodemanager-http",
+        "name": "yarn-nodemanager-http",
+        "tags": [],
+        "port": 8042,
+        "checks": [
+            {
+               "script": "/opt/qnib/hdfs/bin/check.sh yarn-nodemanager-http 8042",
+               "interval": "5s"
+            }
+       ]
+    }
+  ]
+}
