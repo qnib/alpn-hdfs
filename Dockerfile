@@ -22,11 +22,13 @@ ADD etc/consul-templates/hdfs/namenode/hdfs-site.xml.ctmpl /etc/consul-templates
 ADD opt/qnib/hdfs/namenode/bin/start.sh \
     opt/qnib/hdfs/namenode/bin/bootstrap.sh \
     opt/qnib/hdfs/namenode/bin/configure.sh \
+    opt/qnib/hdfs/namenode/bin/healthcheck.sh \
     /opt/qnib/hdfs/namenode/bin/
 ## Datanode Setup
 ADD opt/qnib/hdfs/datanode/bin/start.sh \
     opt/qnib/hdfs/datanode/bin/bootstrap.sh \
     opt/qnib/hdfs/datanode/bin/configure.sh \
+    opt/qnib/hdfs/datanode/bin/healthcheck.sh \
     /opt/qnib/hdfs/datanode/bin/
 ADD etc/consul-templates/hdfs/datanode/hdfs-site.xml.ctmpl /etc/consul-templates/hdfs/datanode/
 RUN echo "source /etc/bashrc.hadoop" >> /etc/bashrc \
