@@ -10,12 +10,14 @@ ENV HADOOP_DFS_REPLICATION=1 \
 
 ADD etc/supervisord.d/hdfs-datanode.ini \
     etc/supervisord.d/hdfs-namenode.ini \
+    etc/supervisord.d/hosts-update.ini \
     /etc/supervisord.d/
 ADD etc/consul.d/hdfs-namenode.json \
     etc/consul.d/hdfs-datanode.json \
     /etc/consul.d/
 # Namenode/Datanode
 ADD etc/consul-templates/hdfs/core-site.xml.ctmpl \
+    etc/consul-templates/hosts.ctmpl \
     /etc/consul-templates/hdfs/
 ADD opt/qnib/hdfs/bin/check.sh /opt/qnib/hdfs/bin/
 # Namenode Setup
