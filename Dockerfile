@@ -12,6 +12,7 @@ ADD etc/supervisord.d/hdfs-datanode.ini \
     etc/supervisord.d/hdfs-namenode.ini \
     etc/supervisord.d/hosts-update.ini \
     /etc/supervisord.d/
+ADD opt/qnib/hosts-update/bin/start.sh /opt/qnib/hosts-update/bin/
 ADD etc/consul.d/hdfs-namenode.json \
     etc/consul.d/hdfs-datanode.json \
     /etc/consul.d/
