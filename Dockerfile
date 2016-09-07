@@ -17,8 +17,9 @@ ADD etc/consul.d/hdfs-namenode.json \
     /etc/consul.d/
 # Namenode/Datanode
 ADD etc/consul-templates/hdfs/core-site.xml.ctmpl \
-    etc/consul-templates/hosts.ctmpl \
-    /etc/consul-templates/hdfs/
+    /etc/consul-templates/hdfs/ 
+ADD etc/consul-templates/hosts.ctmpl \
+    /etc/consul-templates/
 ADD opt/qnib/hdfs/bin/check.sh /opt/qnib/hdfs/bin/
 # Namenode Setup
 ADD etc/consul-templates/hdfs/namenode/hdfs-site.xml.ctmpl /etc/consul-templates/hdfs/namenode/
