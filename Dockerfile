@@ -7,6 +7,7 @@ ENV HADOOP_DFS_REPLICATION=1 \
     HADOOP_HDFS_NAMENODE_URI=localhost \
     HADOOP_YARN_RESOURCEMANAGER=false \
     HADOOP_YARN_NODEMANAGER=false
+VOLUME ["/data/hadoopdata/hdfs/datanode", "/data/hadoopdata/hdfs/namenode"]
 
 ADD etc/supervisord.d/hdfs-datanode.ini \
     etc/supervisord.d/hdfs-namenode.ini \
