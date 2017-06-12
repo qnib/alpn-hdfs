@@ -37,8 +37,8 @@ mkdir: Call From hdfs1/172.17.0.3 to hdfs1:8020 failed on connection exception: 
 This file can be accessed from one of the others...
 
 ```
-➜  alpn-hbase git:(master) ✗ docker exec -ti hdfs3 /opt/hadoop/bin/hadoop fs -ls /test/
+$ docker exec -ti hdfs3 /opt/hadoop/bin/hadoop fs -ls /test/
 Found 1 items
 -rw-r--r--   1 hadoop supergroup        238 2016-05-03 09:58 /test/hosts
-➜  alpn-hbase git:(master) ✗
+$
 ```
